@@ -15,7 +15,7 @@ def autostart():
 mod = "mod4"
 terminal = 'sakura'
 
-sink = os.system("pactl list short sinks | grep RUNNING | cut -c1")
+#sink = os.system("pactl list short sinks | grep RUNNING | cut -c1")
 
 keys = [
     Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
@@ -39,9 +39,9 @@ keys = [
     Key([mod], "r", lazy.spawn("rofi-theme-selector"), desc="Rofi theme selector"),
     Key([], "F12", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
-    Key([mod], "F1", lazy.spawn("librewolf")),
+    Key([mod], "F1", lazy.spawn("firefox")),
     Key([mod], "F2", lazy.spawn("notepadqq")),
-    Key([mod], "F3", lazy.spawn("codium")),
+    Key([mod], "F3", lazy.spawn("code")),
 #    Key([mod], "F3", lazy.spawn("inskcape")),
 #    Key([mod], "F4", lazy.spawn("krita")),
 #    Key([mod], "F5", lazy.spawn("meld")),
@@ -51,17 +51,18 @@ keys = [
     Key([mod], "F12", lazy.spawn("rofi -show run"), desc="rofi"),
 
     Key([mod, "shift"], "p", lazy.spawn("poweroff"), desc="power menu"),
+    Key([mod, "shift"], "o", lazy.spawn("reboot"), desc="power menu"),
 
     Key(["mod1"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift"], "x", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "x", lazy.spawn("betterlockscreen -l dim"), desc="Lock screen"),
 
-    Key([], "Print", lazy.spawn("scrot")),
+    Key([], "Print", lazy.spawn("shutter")),
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5")),
+#    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5")),
+#    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5")),
     Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
     Key([], "XF86AudioNext", lazy.spawn("mpc next")),
     Key([], "XF86AudioPrev", lazy.spawn("mpc prev")),
@@ -170,10 +171,10 @@ screens = [
                 widget.Prompt(foreground=colors[7], prompt='Exec: ', fmt='{} /\\/\\/\\'),
                 widget.WindowName(empty_group_string='Desktop', foreground=colors[7],),
                 widget.Spacer(),
-                widget.Countdown(date=datetime(2021, 12, 24, 18, 00, 00), foreground=colors[7],),
+                widget.Countdown(date=datetime(2022, 4, 23, 00, 00, 00), foreground=colors[7],),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
-#                widget.ThermalSensor(foreground=colors[7], threshold=85),
-#                widget.TextBox(text="|", foreground=colors[7], fontsize=25),
+                widget.ThermalSensor(foreground=colors[7], threshold=85),
+                widget.TextBox(text="|", foreground=colors[7], fontsize=25),
                 widget.Memory(format='Mem : {MemUsed}M', foreground=colors[7],),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
                 widget.CPU(format='CPU : {load_percent}%', foreground=colors[7],),
@@ -182,7 +183,7 @@ screens = [
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
                 widget.Battery(format='{percent:2.0%}', foreground=colors[7],),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
-                widget.Wlan(disconnected_message='Offline', format='{essid}', interface='wlan0', foreground=colors[7],),
+                widget.Wlan(disconnected_message='Offline', format='{essid}', interface='wlo1', foreground=colors[7],),
                 widget.Net(foreground=colors[7], format='{down} / {up}',),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
                 widget.Clock(format='%a %H:%M ', foreground=colors[7],),
@@ -214,7 +215,7 @@ screens = [
                 widget.Prompt(foreground=colors[7], prompt='Exec: '),
                 widget.WindowName(empty_group_string='Desktop', foreground=colors[7],),
                 widget.Spacer(),
-#                widget.Countdown(date=datetime(2021, 3, 23, 20, 00, 00), foreground=colors[7],),
+                widget.Countdown(date=datetime(2022, 4, 23, 00, 00, 00), foreground=colors[7],),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
                 widget.ThermalSensor(foreground=colors[7], threshold=85),
                 widget.TextBox(text="|", foreground=colors[7], fontsize=25),
